@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+require('coffee-script');
+var force = require('../lib/force');
+
+force.start(function(err) {
+  if (!err) force.log.info('force'.grey + ' ok'.green.bold)
+  
+  process.stdout.on('drain', function() {
+    process.exit(err ? 1 : 0);
+  });
+});
